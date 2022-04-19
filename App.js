@@ -1,5 +1,5 @@
 //import "react-native-gesture-handler";
-//import android.os.Bundle;
+
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -12,7 +12,6 @@ import Opcion1 from './screens/Opcion1';
 import Opcion2 from './screens/Opcion2';
 import Opcion3 from './screens/Opcion3';
 import Calendar from './screens/Calendar';
-
 
 const Stack = createNativeStackNavigator();
 const globalScreenOptions = {
