@@ -33,7 +33,7 @@ const Opcion1 = ({ navigation }) => {
     useLayoutEffect(() => {
         navigation.setOptions({
             headerTitle: 'Registra un Medicamento',
-            headerStyle: { backgroundColor: '#772CE8', fontSize: 30 },
+            headerStyle: { backgroundColor: '#F400A2', fontSize: 30 },
             headerTitleStyle: { color: 'white' },
         })
     }, [])
@@ -243,9 +243,11 @@ const Opcion1 = ({ navigation }) => {
                                                 console.log("si fue seleccionado haga tal cosa");
                                                 console.log("guardando info");
                                                 guardar();
+                                                navigation.navigate('Home');
                                             }
                                             if (checked2 === 2) {
                                                 console.log("no fue seleccionado haga tal cosa");
+                                                navigation.navigate('addChat');
                                             }
 
                                         }}
@@ -288,7 +290,7 @@ const styles = StyleSheet.create({
     },
     sender: {
         padding: 15,
-        backgroundColor: "#772CE8",
+        backgroundColor: "#F400A2",
         alignSelf: "flex-start",
         borderRadius: 20,
         margin: 15,

@@ -12,12 +12,12 @@ const RegisterScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const auth = getAuth();
-  const App = app;
+  
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerBackTitle: 'Login',
-      headerStyle: { backgroundColor: 'rgb(223,87,208)', },
+      headerStyle: { backgroundColor: '#F400A2', },
       headerTitle: 'Registrate',
     });
   }, [navigation]);
@@ -50,8 +50,8 @@ const RegisterScreen = ({ navigation }) => {
         <Input placeholder="Password" secureTextEntry type="password" value={password} onChangeText={text => setPassword(text)} />
         <Input placeholder="Imagen (Opcional)" type="text" value={imageUrl} onChangeText={text => setImageUrl(text)} onSubmitEditing={register} />
       </View>
-      <Icon.Button color="rgb(223,87,208)" style={styles.button} onPress={register}>
-        <Text style={{ color: "gray", fontSize: 25 }} >
+      <Icon.Button color="#F400A2" style={styles.button} onPress={register}>
+        <Text style={{ color: "white", fontSize: 25 }} >
           Registrarse
         </Text>
       </Icon.Button>
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     height: 50,
     alignContent: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgb(223,87,208)',
+    backgroundColor: '#F400A2',
     //backgroundColor: '#772CE8',
     color: 'white',
   },

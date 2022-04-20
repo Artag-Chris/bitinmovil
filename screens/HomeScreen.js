@@ -9,14 +9,25 @@ import { Agenda } from 'react-native-calendars';
 import { collection, query, where, getDocs } from "firebase/firestore";
 import {Card, Avatar as Ava} from 'react-native-paper';
 import BottomNav from '../components/BottomNav';
+import { LogBox } from 'react-native';
+import * as Google from 'expo-auth-session/providers/google';
+
+LogBox.ignoreLogs(['Setting a timer for a long period of time'])
 
 
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation,route }) => {
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [ordenes, setOrdenes] = useState({});
+ const [name, setName] = useState('');
+ const [email, setEmail] = useState('');
+const [ordenes, setOrdenes] = useState({});
+
+  
+  //const { name,email,picture} = route?.params;
+  
+  
+  const [message, setMessage] = useState(""); //para escribir mensajes de error
+  const [picture, setPicture] = useState('https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg');
 
   
 
@@ -25,7 +36,7 @@ const HomeScreen = ({ navigation }) => {
       headerLeft: () => (
         <View style={{ marginLeft: 10,marginRight:90 }}>
           <TouchableOpacity onPress={Out} activeOpacity={0.5} >
-            <Avatar rounded size={45} source={{ uri: auth?.currentUser.photoURL || 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
+            <Avatar rounded size={45} source={{ uri:  auth?.currentUser?.photoURL || picture }} />
           </TouchableOpacity>
         </View>
       ),
@@ -69,6 +80,10 @@ const HomeScreen = ({ navigation }) => {
       // ...
     }
   });
+ 
+ 
+  
+ 
   const Out = () => {
     signOut(auth).then(() => {
       console.log("Sign-out successful.")
@@ -80,6 +95,7 @@ const HomeScreen = ({ navigation }) => {
  
 useEffect(() => {
   async function getDate() {
+   
     const q = query(collection(db, "registros"), where("email", "==", email));
   
     const querySnapshot = await getDocs(q);
@@ -87,16 +103,16 @@ useEffect(() => {
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       //console.log(doc.id, " => ", doc.data())
-      let { dosisMedicamento,fechaQueVence,name,Nombremedicamento,nombreusuariorder}=doc.data()
+      let { dosisMedicamento,fechaQueVence,name,nombreMedicamento,nombreusuariorder}=doc.data()
       
-      ayudante.push({ [fechaQueVence]:[{"name":dosisMedicamento,"aquello":name,Nombremedicamento,nombreusuariorder,fechaQueVence}]})
+      ayudante.push({ [fechaQueVence]:[{"name":name,"aquello":name,nombreMedicamento,nombreusuariorder,fechaQueVence,dosisMedicamento}]})
         
     });
     let ayudante2 = ayudante.reduce((acc, curr) => {
      const{fechaQueVence,...rest}=curr
      for (let key in curr) {
         if (acc[key]) {
-         console.log("here")
+        
         } else {
           acc[key] = curr[key];
         }
@@ -106,7 +122,8 @@ useEffect(() => {
     setOrdenes(ayudante2);
   };
  return getDate();
-}, [navigation.navigate]);
+}, [ordenes]);
+//debe ir el array de dependencia con ordenes
 
 
 const renderItem = (item) => {
@@ -120,9 +137,9 @@ const renderItem = (item) => {
               justifyContent: 'space-between',
               alignItems: 'center',
             }}>
-            <Text>{item.name} </Text>
-            <Text>{item.fechaQueVence}</Text>
-            <Ava.Text label="J" />
+            <Text>{item.nombreMedicamento} </Text>
+            <Text>{item.dosisMedicamento}</Text>
+            
           </View>
         </Card.Content>
       </Card>
@@ -133,7 +150,7 @@ const renderItem = (item) => {
   
   return (
 
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white",position:"relative" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <StatusBar style="light" />
       <ScrollView >
         <View style={styles.container}>
@@ -141,9 +158,9 @@ const renderItem = (item) => {
         <Text style={{ fontSize: 20, marginLeft: 20, marginTop: 10,color:"white" }}>{name ? name : "cargando"} ?</Text>
         </View>
         <View style={{flex:1, }}>
-        {ordenes?<Agenda loadItemsForMonth={(month) => {
+       <Agenda loadItemsForMonth={(month) => {
           console.log(month);}}
-          items={ordenes}
+          items={ordenes?ordenes:[]}
           renderItem={renderItem}
           onDayPress={(day) => {
             console.log('selected day', day);
@@ -151,7 +168,7 @@ const renderItem = (item) => {
           pastScrollRange={12}
           futureScrollRange={12}
         
-       /> : <Text>cargando...</Text>}
+       /> 
         </View>
       </ScrollView>
       <BottomNav navigation={navigation} />

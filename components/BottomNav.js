@@ -31,7 +31,7 @@ function BottomNav({ navigation }) {
               <AntDesign name="profile" size={30} color="white" />
             </Pressable>
             <Pressable style={{padding:14, }} android_ripple={{ borderless: true, radius: 50 }} >
-              <AntDesign name="pluscircle" size={30} color="white" onPress={()=> navigation.navigate("calendar")} />
+              <AntDesign name="pluscircle" size={30} color="white" onPress={()=> navigation.navigate("addChat")} />
             </Pressable>
             <Pressable style={styles.iconBehave} android_ripple={{ borderless: true, radius: 50 }} >
               <AntDesign name="setting" size={30} color="white" />

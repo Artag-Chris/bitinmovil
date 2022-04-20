@@ -241,9 +241,11 @@ const Opcion3 = ({ navigation }) => {
                                                 console.log("si fue seleccionado haga tal cosa");
                                                 console.log("guardando info");
                                                 guardar();
+                                                navigation.navigate('Home');
                                             }
                                             if (checked2 === 2) {
                                                 console.log("no fue seleccionado haga tal cosa");
+                                                navigation.navigate('addChat');
                                             }
 
                                         }}
