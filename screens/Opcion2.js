@@ -33,7 +33,7 @@ const Opcion2 = ({ navigation }) => {
     useLayoutEffect(() => {
         navigation.setOptions({
             headerTitle: 'Registra una formula',
-            headerStyle: { backgroundColor: '#772CE8', fontSize: 30 },
+            headerStyle: { backgroundColor: '#F400A2', fontSize: 30 },
             headerTitleStyle: { color: 'white' },
         })
     }, [])
@@ -147,7 +147,7 @@ const Opcion2 = ({ navigation }) => {
                             </View>
                             <View style={styles.sender }>
                                 <Avatar position="absolute" bottom={-20} left={-5} rounded size={45} source={{ uri: auth?.currentUser.photoURL || 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
-                                <TextInput style={styles.input} onSubmitEditing={primerarespuesta}  placeholder="Escribe el nombre del medicamento" placeholderTextColor="white" onChangeText={(text) => setInput(text)} />
+                                <TextInput color="white" autoFocus style={styles.input} onSubmitEditing={primerarespuesta}  placeholder="Escribe el nombre del medicamento" placeholderTextColor="white" onChangeText={(text) => setInput(text)} />
                             </View>
 
                             
@@ -158,7 +158,7 @@ const Opcion2 = ({ navigation }) => {
 
                             {interruptor ?  <View style={styles.sender }>
                                 <Avatar position="absolute" bottom={-20} left={-5} rounded size={45} source={{ uri: auth?.currentUser.photoURL || 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
-                                <TextInput style={styles.input} onSubmitEditing={segundaRespuesta}  placeholder="Cuantos miligramos?" placeholderTextColor="white" onChangeText={(text) => setInput(text)} />
+                                <TextInput color="white" autoFocus style={styles.input} onSubmitEditing={segundaRespuesta}  placeholder="Cuantos miligramos?" placeholderTextColor="white" onChangeText={(text) => setInput(text)} />
                             </View> : null}
                             {interruptor2 ? <View style={styles.reciever}>
                                 <Avatar position="absolute" bottom={-20} right={-5} rounded size={45} source={{ uri: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' }} />
@@ -292,7 +292,7 @@ const styles = StyleSheet.create({
     },
     sender: {
         padding: 15,
-        backgroundColor: "#772CE8",
+        backgroundColor: "#F400A2",
         alignSelf: "flex-start",
         borderRadius: 20,
         margin: 15,

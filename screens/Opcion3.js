@@ -32,7 +32,7 @@ const Opcion3 = ({ navigation }) => {
     useLayoutEffect(() => {
         navigation.setOptions({
             headerTitle: 'Registra una alarma',
-            headerStyle: { backgroundColor: '#772CE8', fontSize: 30 },
+            headerStyle: { backgroundColor: '#F400A2', fontSize: 30 },
             headerTitleStyle: { color: 'white' },
         })
     }, [])
@@ -143,7 +143,7 @@ const Opcion3 = ({ navigation }) => {
                             </View>
                             <View style={styles.sender }>
                                 <Avatar position="absolute" bottom={-20} left={-5} rounded size={45} source={{ uri: auth?.currentUser.photoURL || 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
-                                <TextInput style={styles.input} onSubmitEditing={primerarespuesta}  placeholder="Escribe el nombre del medicamento" placeholderTextColor="white" onChangeText={(text) => setInput(text)} />
+                                <TextInput autoFocus color="white" style={styles.input} onSubmitEditing={primerarespuesta}  placeholder="Escribe el nombre del medicamento" placeholderTextColor="white" onChangeText={(text) => setInput(text)} />
                             </View>
 
                             
@@ -154,7 +154,7 @@ const Opcion3 = ({ navigation }) => {
 
                             {interruptor ?  <View style={styles.sender }>
                                 <Avatar position="absolute" bottom={-20} left={-5} rounded size={45} source={{ uri: auth?.currentUser.photoURL || 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
-                                <TextInput style={styles.input} onSubmitEditing={segundaRespuesta}  placeholder="Cuantos miligramos?" placeholderTextColor="white" onChangeText={(text) => setInput(text)} />
+                                <TextInput color="white" style={styles.input} onSubmitEditing={segundaRespuesta}  placeholder="Cuantos miligramos?" placeholderTextColor="white" onChangeText={(text) => setInput(text)} autoFocus/>
                             </View> : null}
                             {interruptor2 ? <View style={styles.reciever}>
                                 <Avatar position="absolute" bottom={-20} right={-5} rounded size={45} source={{ uri: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80' }} />
@@ -162,7 +162,7 @@ const Opcion3 = ({ navigation }) => {
                             </View>: null}
                             {interruptor2 ? <View style={styles.sender }>
                                 <Avatar position="absolute" bottom={-20} left={-5} rounded size={45} source={{ uri: auth?.currentUser.photoURL || 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
-                                <Button title="escoje la fecha" onPress={showCalendar}  /> 
+                                <Button color="white" title="escoje la fecha" onPress={showCalendar}  /> 
                             </View> : null}
                             {show &&(<DateTimePicker
                                 
@@ -288,13 +288,15 @@ const styles = StyleSheet.create({
     },
     sender: {
         padding: 15,
-        backgroundColor: "#772CE8",
+        backgroundColor: "#F400A2",
         alignSelf: "flex-start",
         borderRadius: 20,
         margin: 15,
         maxWidth: "80%",
         position: "relative",
         color: "white",
+        
+        
     }, button: {},
     placeholder: {
         color: "white",

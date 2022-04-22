@@ -71,6 +71,7 @@ const redirectUri = AuthSession.makeRedirectUri({
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                alert("Usuario O Contraseña incorrectos");
             });
     }
     useEffect(() => {
@@ -123,7 +124,7 @@ const redirectUri = AuthSession.makeRedirectUri({
                 style={{ width: 200, height: 200, }}
             />
             <View style={styles.inputContainer} >
-                <Input placeholder="Email" type="email" value={email} onChangeText={text => setEmail(text)} />
+                <Input placeholder="Email" type="email" value={email} onChangeText={text => setEmail(text)} autoCompleteType />
                 <Input placeholder="Password" secureTextEntry type="password" value={password} onChangeText={text => setPassword(text)} />
 
             </View>

@@ -145,18 +145,18 @@ const Opcion1 = ({ navigation }) => {
                             </View>
                             <View style={styles.sender }>
                                 <Avatar position="absolute" bottom={-20} left={-5} rounded size={45} source={{ uri: auth?.currentUser.photoURL || 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
-                                <TextInput style={styles.input} onSubmitEditing={primerarespuesta}  placeholder="Escribe el nombre del medicamento" placeholderTextColor="white" onChangeText={(text) => setInput(text)} />
+                                <TextInput color="white" style={styles.input} onSubmitEditing={primerarespuesta}  placeholder="Escribe el nombre del medicamento" placeholderTextColor="white" onChangeText={(text) => setInput(text)} autoFocus />
                             </View>
 
                             
                             {interruptor ? <View style={styles.reciever}>
-                                <Avatar position="absolute" bottom={-20} right={-5} rounded size={45} source={{ uri: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=461&q=80' }} />
+                                <Avatar position="absolute" bottom={-20} right={-5} rounded size={45} source={{ uri: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=461&q=80' }}  />
                                 <Text  > Escribe la Dosis </Text>
                             </View>: null}
 
                             {interruptor ?  <View style={styles.sender }>
                                 <Avatar position="absolute" bottom={-20} left={-5} rounded size={45} source={{ uri: auth?.currentUser.photoURL || 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
-                                <TextInput style={styles.input} onSubmitEditing={segundaRespuesta}  placeholder="Cuantos miligramos?" placeholderTextColor="white" onChangeText={(text) => setInput(text)} />
+                                <TextInput  color="white"style={styles.input} autoFocus onSubmitEditing={segundaRespuesta}  placeholder="Cuantos miligramos?" placeholderTextColor="white" onChangeText={(text) => setInput(text)} />
                             </View> : null}
                             {interruptor2 ? <View style={styles.reciever}>
                                 <Avatar position="absolute" bottom={-20} right={-5} rounded size={45} source={{ uri: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=461&q=80' }} />
@@ -164,9 +164,9 @@ const Opcion1 = ({ navigation }) => {
                             </View>: null}
                             {interruptor2 ? <View style={styles.sender }>
                                 <Avatar position="absolute" bottom={-20} left={-5} rounded size={45} source={{ uri: auth?.currentUser.photoURL || 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' }} />
-                                <Button title="escoje la fecha" onPress={showCalendar}  /> 
+                                <Button title="escoje la fecha" onPress={showCalendar} autoFocus /> 
                             </View> : null}
-                            {show &&(<DateTimePicker
+                            {show &&(<DateTimePicker 
                                 
                                 textId="date_picker_dialog_title"
                                 value={date}

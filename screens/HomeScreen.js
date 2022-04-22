@@ -35,7 +35,7 @@ const [ordenes, setOrdenes] = useState({});
     navigation.setOptions({
       headerLeft: () => (
         <View style={{ marginLeft: 10,marginRight:90 }}>
-          <TouchableOpacity onPress={Out} activeOpacity={0.5} >
+          <TouchableOpacity  activeOpacity={0.5} >
             <Avatar rounded size={45} source={{ uri:  auth?.currentUser?.photoURL || picture }} />
           </TouchableOpacity>
         </View>
